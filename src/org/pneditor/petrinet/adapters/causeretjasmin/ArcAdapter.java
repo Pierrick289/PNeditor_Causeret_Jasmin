@@ -62,6 +62,10 @@ public class ArcAdapter extends AbstractArc {
 		}
 		this.arc.setWeight(multiplicity);
 	}
+	
+	/**
+	 * new comment
+	 */
 
 }
 
