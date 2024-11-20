@@ -25,9 +25,9 @@ public class ArcAdapter extends AbstractArc {
 	@Override
 	public AbstractNode getDestination() {
 			if (this.arc instanceof OutArc) {
-				return ;
+				return new TransitionAdapter("", this.getTransition());
 			} else {
-				return ;
+				return new PlaceAdapter("", this.arc.getPlace());
 			}
 	}
 
