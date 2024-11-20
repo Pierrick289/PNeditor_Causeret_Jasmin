@@ -17,10 +17,6 @@ public class ArcAdapter extends AbstractArc {
 			return new TransitionAdapter("", this.getTransition());
 		}
 	}
-
-	public Transition getTransition() {
-		for 
-	}
 	
 	@Override
 	public AbstractNode getDestination() {
@@ -31,34 +27,40 @@ public class ArcAdapter extends AbstractArc {
 			}
 	}
 
+	private Transition getTransition() {
+		return ;
+	}
+	
 	@Override
 	public boolean isReset() {
-		// TODO Auto-generated method stub
-		return false;
+		return this.arc instanceof Zero;
 	}
 
 	@Override
 	public boolean isRegular() {
 		// TODO Auto-generated method stub
-		return false;
+		return !(this.arc instanceof Empty || this.arc instanceof Zero);
 	}
 
 	@Override
 	public boolean isInhibitory() {
-		// TODO Auto-generated method stub
-		return false;
+		return this.arc instanceof Empty;
 	}
 
 	@Override
 	public int getMultiplicity() throws ResetArcMultiplicityException {
-		// TODO Auto-generated method stub
-		return 0;
+		if (this.isReset()) {
+			throw new ResetArcMultiplicityException();
+		}
+		return this.arc.getWeight();
 	}
 
 	@Override
 	public void setMultiplicity(int multiplicity) throws ResetArcMultiplicityException {
-		// TODO Auto-generated method stub
-		
+		if (this.isReset()) {
+			throw new ResetArcMultiplicityException();
+		}
+		this.arc.setWeight(multiplicity);
 	}
 
 }
