@@ -21,28 +21,51 @@ public class PetriNetAdapter extends PetriNetInterface {
 
 	@Override
 	public AbstractTransition addTransition() {
-		// TODO Auto-generated method stub
-		return null;
+		TransitionAdapter transition = new TransitionAdapter("", new Transition());
+		return transition;
 	}
 
 	@Override
 	public AbstractArc addRegularArc(AbstractNode source, AbstractNode destination) throws UnimplementedCaseException {
-		// TODO Auto-generated method stub
-		return null;
+		if (source.getClass() == PlaceAdapter.class) {
+			PlaceAdapter place = (PlaceAdapter)source;
+			TransitionAdapter transition = (TransitionAdapter)destination;
+			OutArc arc = new OutArc(place.getPlace(),1);
+			ArcAdapter adaptedArc = new ArcAdapter(arc);
+			adaptedArc.setTransition(transition);
+			transition.add(arc);
+			return adaptedArc;
+		} else {
+			PlaceAdapter place = (PlaceAdapter)destination;
+			TransitionAdapter transition = (TransitionAdapter)source;
+			InArc arc = new InArc(place.getPlace(),1);
+			ArcAdapter adaptedArc = new ArcAdapter(arc);
+			adaptedArc.setTransition(transition);
+			transition.add(arc);
+			return adaptedArc;
+		}
 	}
 
 	@Override
-	public AbstractArc addInhibitoryArc(AbstractPlace place, AbstractTransition transition)
-			throws UnimplementedCaseException {
-		// TODO Auto-generated method stub
-		return null;
+	public AbstractArc addInhibitoryArc(AbstractPlace place, AbstractTransition transition) throws UnimplementedCaseException {
+		PlaceAdapter placeAdapted = (PlaceAdapter)place;
+		TransitionAdapter transitionAdapted = (TransitionAdapter)transition;
+		Zero arc = new Zero(placeAdapted.getPlace());
+		ArcAdapter adaptedArc = new ArcAdapter(arc);
+		adaptedArc.setTransition(transitionAdapted);
+		transitionAdapted.add(arc);
+		return adaptedArc;
 	}
 
 	@Override
-	public AbstractArc addResetArc(AbstractPlace place, AbstractTransition transition)
-			throws UnimplementedCaseException {
-		// TODO Auto-generated method stub
-		return null;
+	public AbstractArc addResetArc(AbstractPlace place, AbstractTransition transition) throws UnimplementedCaseException {
+		PlaceAdapter placeAdapted = (PlaceAdapter)place;
+		TransitionAdapter transitionAdapted = (TransitionAdapter)transition;
+		Empty arc = new Empty(placeAdapted.getPlace());
+		ArcAdapter adaptedArc = new ArcAdapter(arc);
+		adaptedArc.setTransition(transitionAdapted);
+		transitionAdapted.add(arc);
+		return adaptedArc;
 	}
 
 	@Override

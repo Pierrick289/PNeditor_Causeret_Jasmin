@@ -16,5 +16,16 @@ public class TransitionAdapter extends AbstractTransition{
 		return this.transition;
 	}
 	
+	public void add(Arc arc) {
+		if (arc instanceof OutArc) {
+			this.getTransition().addOutArc((OutArc)arc);
+		} else if (arc instanceof Empty) {
+			this.getTransition().addEmptyArc((Empty)arc);
+		} else if (arc instanceof Zero) {
+			this.getTransition().addZeroArc((Zero)arc);
+		} else {
+			this.getTransition().addInArcNormal((InArc)arc);
+		}
+	}
 	
 }

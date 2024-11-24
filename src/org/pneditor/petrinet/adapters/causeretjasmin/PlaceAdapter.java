@@ -5,36 +5,36 @@ import org.pneditor.petrinet.models.causeretjasmin.*;
 
 public class PlaceAdapter extends AbstractPlace {
 	
-	private Place P;
+	private Place place;
 	
-	public PlaceAdapter(Place P) {
+	public PlaceAdapter(Place place) {
 		super("label");
-		this.P = P;
+		this.place = place;
 	}
 	
-	//TODO mettre les adpateurs pour toutes les méthodes ! 
-	
+	public Place getPlace() {
+		return this.place;
+	}
+		
 	@Override
 	public void addToken() {
-		P.addTokens(1);
+		place.addTokens(1);
 		
 	}
 
 	@Override
 	public void removeToken() {
-		P.remTokens(1);
+		place.remTokens(1);
 		
 	}
 
 	@Override
 	public int getTokens() {
-		return P.getTokens();
+		return place.getTokens();
 	}
 
 	@Override
 	public void setTokens(int tokens) {
-		P.setTokens(tokens);
-		
+		place.setTokens(tokens);
 	}
-
 }
