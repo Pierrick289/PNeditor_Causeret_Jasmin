@@ -27,7 +27,7 @@ public class PetriNetAdapter extends PetriNetInterface {
 		if (source.getClass() == PlaceAdapter.class) {
 			PlaceAdapter place = (PlaceAdapter)source;
 			TransitionAdapter transition = (TransitionAdapter)destination;
-			OutArc arc = new OutArc(place.getPlace(),1);
+			InArc arc = new InArc(place.getPlace(),1);
 			ArcAdapter adaptedArc = new ArcAdapter(arc);
 			adaptedArc.setTransition(transition);
 			transition.add(arc);
@@ -35,7 +35,7 @@ public class PetriNetAdapter extends PetriNetInterface {
 		} else {
 			PlaceAdapter place = (PlaceAdapter)destination;
 			TransitionAdapter transition = (TransitionAdapter)source;
-			InArc arc = new InArc(place.getPlace(),1);
+			OutArc arc = new OutArc(place.getPlace(),1);
 			ArcAdapter adaptedArc = new ArcAdapter(arc);
 			adaptedArc.setTransition(transition);
 			transition.add(arc);
@@ -95,7 +95,7 @@ public class PetriNetAdapter extends PetriNetInterface {
 			TransitionAdapter transition = (TransitionAdapter)arcAdapted.getSource();
 			transition.getTransition().remArcT((InArc)arcAdapted.getArc());
 		}
-	} /* Erros here */
+	}
 
 	@Override
 	public boolean isEnabled(AbstractTransition transition) throws ResetArcMultiplicityException {
