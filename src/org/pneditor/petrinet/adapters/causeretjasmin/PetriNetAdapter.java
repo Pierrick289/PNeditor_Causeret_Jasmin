@@ -70,32 +70,38 @@ public class PetriNetAdapter extends PetriNetInterface {
 
 	@Override
 	public void removePlace(AbstractPlace place) {
-		// TODO Auto-generated method stub
-		
+		for (AbstractTransition transition : this.getTransitions()) {
+			for (AbstractArc arc : this.getConnectedArcs(transition)) {
+				ArcAdapter arcAdapted = (ArcAdapter)arc;
+				/*A compléter*/
+			}
+		}
 	}
 
 	@Override
 	public void removeTransition(AbstractTransition transition) {
-		// TODO Auto-generated method stub
-		
+		for (AbstractArc arc : this.getConnectedArcs(transition)) {
+			this.removeAbstractArc(arc);
+		}
+		this.removeAbstractTransition(transition);
 	}
 
 	@Override
 	public void removeArc(AbstractArc arc) {
-		// TODO Auto-generated method stub
-		
+		ArcAdapter arcAdapted = (ArcAdapter)arc;
+		/*A compléter*/
 	}
 
 	@Override
 	public boolean isEnabled(AbstractTransition transition) throws ResetArcMultiplicityException {
-		// TODO Auto-generated method stub
-		return false;
+		TransitionAdapter transitionAdapted = (TransitionAdapter)transition;
+		return transitionAdapted.isTrig();
 	}
 
 	@Override
 	public void fire(AbstractTransition transition) throws ResetArcMultiplicityException {
-		// TODO Auto-generated method stub
-		
+		TransitionAdapter transitionAdapted = (TransitionAdapter)transition;
+		transitionAdapted.fire();
 	}
 	
 	

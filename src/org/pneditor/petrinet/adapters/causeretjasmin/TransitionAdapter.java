@@ -28,4 +28,16 @@ public class TransitionAdapter extends AbstractTransition{
 		}
 	}
 	
+	public void fire() {
+		this.transition.fire();
+	}
+	
+	public boolean isTrig() {
+		boolean isTrigTransition = true;
+		for (InArc ia : this.transition.getInArcs()) {
+			isTrigTransition = isTrigTransition && ia.isTrig();
+		}
+		return isTrigTransition;
+	}
+	
 }
