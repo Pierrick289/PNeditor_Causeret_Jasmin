@@ -75,7 +75,6 @@ public class PetriNetAdapter extends PetriNetInterface {
 				}
 			}
 		}
-		this.removeAbstractPlace(place);
 	}
 
 	@Override
@@ -83,7 +82,6 @@ public class PetriNetAdapter extends PetriNetInterface {
 		for (AbstractArc arc : this.getConnectedArcs(transition)) {
 			this.removeAbstractArc(arc);
 		}
-		this.removeAbstractTransition(transition);
 	}
 
 	@Override
@@ -91,13 +89,13 @@ public class PetriNetAdapter extends PetriNetInterface {
 		ArcAdapter arcAdapted = (ArcAdapter)arc;
 		if (arcAdapted.getDestination().getClass() == TransitionAdapter.class) {
 			TransitionAdapter transition = (TransitionAdapter)arcAdapted.getDestination();
-			transition.getTransition().remArcT((InArc)arcAdapted.getArc());
+			transition.getTransition().remArcT((OutArc)arcAdapted.getArc());
 		}
 		else {
 			TransitionAdapter transition = (TransitionAdapter)arcAdapted.getSource();
-			transition.getTransition().remArcT((OutArc)arcAdapted.getArc());
+			transition.getTransition().remArcT((InArc)arcAdapted.getArc());
 		}
-	}
+	} /* Erros here */
 
 	@Override
 	public boolean isEnabled(AbstractTransition transition) throws ResetArcMultiplicityException {
