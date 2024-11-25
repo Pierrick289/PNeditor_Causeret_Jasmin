@@ -7,8 +7,8 @@ public class PlaceAdapter extends AbstractPlace {
 	
 	private Place place;
 	
-	public PlaceAdapter(Place place) {
-		super("label");
+	public PlaceAdapter(String label, Place place) {
+		super(label);
 		this.place = place;
 	}
 	

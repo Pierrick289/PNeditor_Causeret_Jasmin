@@ -11,12 +11,9 @@ import org.pneditor.petrinet.models.causeretjasmin.*;
 
 public class PetriNetAdapter extends PetriNetInterface {
 	
-	private PetriNet pn;
-
 	@Override
 	public AbstractPlace addPlace() {
-		Place p = pn.addPlace(new Place());
-		return new PlaceAdapter(p);
+		return new PlaceAdapter("",new Place());
 	}
 
 	@Override
@@ -73,9 +70,12 @@ public class PetriNetAdapter extends PetriNetInterface {
 		for (AbstractTransition transition : this.getTransitions()) {
 			for (AbstractArc arc : this.getConnectedArcs(transition)) {
 				ArcAdapter arcAdapted = (ArcAdapter)arc;
-				/*A compléter*/
+				if (arcAdapted.getSource().equals(place) || arcAdapted.getDestination().equals(place)) {
+					this.removeArc(arc);
+				}
 			}
 		}
+		this.removeAbstractPlace(place);
 	}
 
 	@Override
@@ -89,7 +89,14 @@ public class PetriNetAdapter extends PetriNetInterface {
 	@Override
 	public void removeArc(AbstractArc arc) {
 		ArcAdapter arcAdapted = (ArcAdapter)arc;
-		/*A compléter*/
+		if (arcAdapted.getDestination().getClass() == TransitionAdapter.class) {
+			TransitionAdapter transition = (TransitionAdapter)arcAdapted.getDestination();
+			transition.getTransition().remArcT((InArc)arcAdapted.getArc());
+		}
+		else {
+			TransitionAdapter transition = (TransitionAdapter)arcAdapted.getSource();
+			transition.getTransition().remArcT((OutArc)arcAdapted.getArc());
+		}
 	}
 
 	@Override

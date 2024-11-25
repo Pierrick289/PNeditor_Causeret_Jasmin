@@ -14,10 +14,14 @@ public class ArcAdapter extends AbstractArc {
 		this.arc = arc;
 	}
 	
+	public Arc getArc() {
+		return this.arc;
+	}
+	
 	@Override
 	public AbstractNode getSource() {
 		if (this.arc instanceof OutArc) {
-			return new PlaceAdapter(this.arc.getPlace());
+			return new PlaceAdapter("",this.arc.getPlace());
 		} else {
 			return transition;
 		}
@@ -28,7 +32,7 @@ public class ArcAdapter extends AbstractArc {
 			if (this.arc instanceof OutArc) {
 				return transition;
 			} else {
-				return new PlaceAdapter(this.arc.getPlace());
+				return new PlaceAdapter("",this.arc.getPlace());
 			}
 	}
 	

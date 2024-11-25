@@ -40,4 +40,8 @@ public class TransitionAdapter extends AbstractTransition{
 		return isTrigTransition;
 	}
 	
+	public void remArcT(ArcAdapter arc) {
+		this.getTransition().remArcT(arc.getArc());
+	}
+	
 }
