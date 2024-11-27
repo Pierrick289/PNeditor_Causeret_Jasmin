@@ -48,7 +48,7 @@ public class ArcAdapter extends AbstractArc {
 	
 	@Override
 	public boolean isReset() {
-		return this.arc instanceof Zero;
+		return this.arc instanceof Empty;
 	}
 
 	@Override
@@ -58,7 +58,7 @@ public class ArcAdapter extends AbstractArc {
 
 	@Override
 	public boolean isInhibitory() {
-		return this.arc instanceof Empty;
+		return this.arc instanceof Zero;
 	}
 
 	@Override
