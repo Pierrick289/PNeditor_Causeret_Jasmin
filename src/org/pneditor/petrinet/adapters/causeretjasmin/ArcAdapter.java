@@ -20,7 +20,7 @@ public class ArcAdapter extends AbstractArc {
 	
 	@Override
 	public AbstractNode getSource() {
-		if (this.arc instanceof OutArc) {
+		if (this.arc instanceof InArc) {
 			return new PlaceAdapter("",this.arc.getPlace());
 		} else {
 			return transition;
@@ -29,7 +29,7 @@ public class ArcAdapter extends AbstractArc {
 	
 	@Override
 	public AbstractNode getDestination() {
-			if (this.arc instanceof OutArc) {
+			if (this.arc instanceof InArc) {
 				return transition;
 			} else {
 				return new PlaceAdapter("",this.arc.getPlace());

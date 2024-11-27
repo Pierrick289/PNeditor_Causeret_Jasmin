@@ -89,11 +89,11 @@ public class PetriNetAdapter extends PetriNetInterface {
 		ArcAdapter arcAdapted = (ArcAdapter)arc;
 		if (arcAdapted.getDestination().getClass() == TransitionAdapter.class) {
 			TransitionAdapter transition = (TransitionAdapter)arcAdapted.getDestination();
-			transition.getTransition().remArcT((OutArc)arcAdapted.getArc());
+			transition.getTransition().remArcT((InArc)arcAdapted.getArc());
 		}
 		else {
 			TransitionAdapter transition = (TransitionAdapter)arcAdapted.getSource();
-			transition.getTransition().remArcT((InArc)arcAdapted.getArc());
+			transition.getTransition().remArcT((OutArc)arcAdapted.getArc());
 		}
 	}
 
