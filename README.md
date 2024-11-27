@@ -32,9 +32,9 @@ Requirements: Java SE 8+
 #Fil rouge Petri Net - Implémentation
 
 
-*Ce document est écrit en Français.*
+*La suite de ce document est écrit en Français, et correspond au README attendu pour l'évaluation*
 
-*Ce document décrit l'agencement du code, son contenu, la méthodologie de lancement des tests, ainsi que quelques remarques pour faire le lien entre la conception initiale et le code actuel.*
+*Cette partie décrit l'agencement du code, son contenu, la méthodologie de lancement des tests, ainsi que quelques remarques pour faire le lien entre la conception initiale et le code actuel.*
 
 ###Agencement et contenu
 
@@ -49,7 +49,7 @@ Il y a aussi :
 	<li>Le rapport de relecture de nos camarades, complété par nos décisions finales. (en pdf)
 	<li>La grille d'autoévaluation des bonnes pratiques. (en pdf)
 	<li>Ce fichier README.md 
-	<li>Un image PNG qui contient le diagramme de classe de rétro-ingénierie de notre implantation finale (notre façon d'implémenter un PetriNet).
+	<li>Une image PNG qui contient le diagramme de classe de rétro-ingénierie de notre implantation finale (notre façon d'implémenter un PetriNet).
 </ul>
 Il y a ensuite plusieurs packages qui étaient déjà présent, dont le package src que nous avons modifié. Nous avons rajouté : 
 <ul>
@@ -76,6 +76,8 @@ Pour cela, il faut :
 
 ###Lien entre le code actuel et la conception initiale (diagramme de classe UML) : 
 
+Concernat notre implémentation :
+
 Notre code ne représente pas exactement le diagramme de classe que nous avions construit initialement.
 Le diagramme de classe final est celui obtenu par retro-ingénierie avec ObjectAid. 
 Il y a trois différences majeures :
@@ -101,3 +103,12 @@ De cette façon, il ne peut pas y avoir deux arcs qui relient une place et une t
 
 Remarque : Mise à jour du 13/11 (dernière modification) : nous avons modifié les méthodes remPlace() et remTransition de la classe PetriNet.
 
+Concernant notre adaptateur : 
+Nous avons suivi le patron de conception adaptateur pour les classes ArcAdapter, PlaceAdapter et TransitionAdapter.
+Toutefois, nous avons légérement adapté notre façon de suivre ce patron de conception pour la classe PetriNetAdapter.
+En effet, nous avons aussi suivi le patron de conception adaptateur mais nous n'avons pas utilisé en variable d'instance un PetriNet de notre implémentation (nous n'avons pas encapsuler une instance de PetriNet dans PetriNetAdapter). 
+Nous avons fait ce choix car nous estimons qu'il y a déjà les espaces mémoires nécessaires pour ce dont on a besoin dans la classe PetriNetInterface proposer par le client. Ainsi, il aurait été redondant (et non utile) d'enregistrer une variable d'instance PetriNet dans la classe PetriNetAdapter (de plus nous pouvons créer nos places, transitions et arcs sans avoir à utiliser une instance de PetriNet, donc on en avait pas vraiment besoin). 
+
+###Notre commentaire de l’analyse statique de notre code avec STAN:
+
+A compléter : analyser les 3 trucs code client, adapteur et implémentation + remarque sur dépendances et métriques.
