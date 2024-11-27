@@ -10,7 +10,7 @@ import org.pneditor.petrinet.UnimplementedCaseException;
 import org.pneditor.petrinet.models.causeretjasmin.*;
 
 public class PetriNetAdapter extends PetriNetInterface {
-	
+		
 	@Override
 	public AbstractPlace addPlace() {
 		return new PlaceAdapter("",new Place());
@@ -27,7 +27,7 @@ public class PetriNetAdapter extends PetriNetInterface {
 		if (source.getClass() == PlaceAdapter.class) {
 			PlaceAdapter place = (PlaceAdapter)source;
 			TransitionAdapter transition = (TransitionAdapter)destination;
-			OutArc arc = new OutArc(place.getPlace(),1);
+			InArc arc = new InArc(place.getPlace(),1);
 			ArcAdapter adaptedArc = new ArcAdapter(arc);
 			adaptedArc.setTransition(transition);
 			transition.add(arc);
@@ -35,7 +35,7 @@ public class PetriNetAdapter extends PetriNetInterface {
 		} else {
 			PlaceAdapter place = (PlaceAdapter)destination;
 			TransitionAdapter transition = (TransitionAdapter)source;
-			InArc arc = new InArc(place.getPlace(),1);
+			OutArc arc = new OutArc(place.getPlace(),1);
 			ArcAdapter adaptedArc = new ArcAdapter(arc);
 			adaptedArc.setTransition(transition);
 			transition.add(arc);
@@ -89,11 +89,11 @@ public class PetriNetAdapter extends PetriNetInterface {
 		ArcAdapter arcAdapted = (ArcAdapter)arc;
 		if (arcAdapted.getDestination().getClass() == TransitionAdapter.class) {
 			TransitionAdapter transition = (TransitionAdapter)arcAdapted.getDestination();
-			transition.getTransition().remArcT((OutArc)arcAdapted.getArc());
+			transition.getTransition().remArcT((InArc)arcAdapted.getArc());
 		}
 		else {
 			TransitionAdapter transition = (TransitionAdapter)arcAdapted.getSource();
-			transition.getTransition().remArcT((InArc)arcAdapted.getArc());
+			transition.getTransition().remArcT((OutArc)arcAdapted.getArc());
 		}
 	}
 
