@@ -16,6 +16,10 @@ public class ArcAdapter extends AbstractArc {
 		this.placeAdapted = new PlaceAdapter("",this.arc.getPlace());
 	}
 	
+	/**
+	 * 
+	 * @return arc connected to the arc
+	 */
 	public Arc getArc() {
 		return this.arc;
 	}
@@ -38,10 +42,19 @@ public class ArcAdapter extends AbstractArc {
 			}
 	}
 	
+	/**
+	 * Setter of the transition of the arc
+	 * 
+	 * @param transition
+	 */
 	public void setTransition(TransitionAdapter transition) {
 		this.transition = transition;
 	}
 
+	/**
+	 * 
+	 * @return transition connected to the arc
+	 */
 	public TransitionAdapter getTransition() {
 		return this.transition;
 	}

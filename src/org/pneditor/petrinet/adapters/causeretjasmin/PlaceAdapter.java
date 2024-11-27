@@ -12,6 +12,10 @@ public class PlaceAdapter extends AbstractPlace {
 		this.place = place;
 	}
 	
+	/**
+	 * 
+	 * @return place 
+	 */
 	public Place getPlace() {
 		return this.place;
 	}

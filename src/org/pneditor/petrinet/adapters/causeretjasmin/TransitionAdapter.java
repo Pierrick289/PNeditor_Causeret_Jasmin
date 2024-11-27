@@ -12,10 +12,18 @@ public class TransitionAdapter extends AbstractTransition{
 		this.transition = transition;
 	}
 	
+	/**
+	 * 
+	 * @return transition
+	 */
 	public Transition getTransition() {
 		return this.transition;
 	}
 	
+	/**
+	 * Add an arc to the transition
+	 * @param arc
+	 */
 	public void add(Arc arc) {
 		if (arc instanceof OutArc) {
 			this.getTransition().addOutArc((OutArc)arc);
@@ -28,10 +36,17 @@ public class TransitionAdapter extends AbstractTransition{
 		}
 	}
 	
+	/**
+	 * Refers to the fire() method of Transition
+	 */
 	public void fire() {
 		this.transition.fire();
 	}
 	
+	/**
+	 * 
+	 * @return true if the transition is triggerable, false else
+	 */
 	public boolean isTrig() {
 		boolean isTrigTransition = true;
 		for (InArc ia : this.transition.getInArcs()) {
@@ -40,6 +55,10 @@ public class TransitionAdapter extends AbstractTransition{
 		return isTrigTransition;
 	}
 	
+	/**
+	 * Removes an arc from the transition
+	 * @param arc
+	 */
 	public void remArcT(ArcAdapter arc) {
 		this.getTransition().remArcT(arc.getArc());
 	}
