@@ -38,41 +38,52 @@ Requirements: Java SE 8+
 
 ###Agencement et contenu
 
-Il y a tout d'abord deux bibliothèques :
+Il y a tout d'abord trois bibliothèques :
 <ul>
 	<li>JRE System Library : celle du jdk 21 (la version d'Eclipse et du JRE qu'on utilise est celle-ci).
-	<li>JUnit 5 : pour faire des tests JUnit.
+	<li>JUnit 5 : pour faire des tests JUnit (que nous avons rajouté).
+	<li>Referenced Libraries (une bibliothèque qui était déjà dans le projet mapd-pne-code quand nous l'avons récupéré sur Moodle).
 </ul>
 Il y a aussi :
 <ul>
-	<li>Le rapport de relecture de nos camarades, complété par nos décisions finales.
-	<li>La grille d'autoévaluation des bonnes pratiques.
+	<li>Le rapport de relecture de nos camarades, complété par nos décisions finales. (en pdf)
+	<li>La grille d'autoévaluation des bonnes pratiques. (en pdf)
+	<li>Ce fichier README.md 
+	<li>Un image PNG qui contient le diagramme de classe de rétro-ingénierie de notre implantation finale (notre façon d'implémenter un PetriNet).
 </ul>
-Il y a ensuite le package src, dans lequel se trouve : 
+Il y a ensuite plusieurs packages qui étaient déjà présent, dont le package src que nous avons modifié. Nous avons rajouté : 
 <ul>
-	<li>Ce fichier texte README.
-	<li>Le package fil_rouge dans le lequel il y a notre implémentation du PetriNet.
-	<li>Le package unitTest dans lequel nous avons fait des tests JUnit.
-	<li>Le package test dans lequel nous avons fait quelques tests avec des méthodes main, pour nous aider dans la compréhension et rédaction de notre code.
+	<li>Dans src.org.pneditor.petrinet.models , un package causeretjasmin qui contient notre implémentation finale d'un PetriNet.
+	<li>Dans src.org.pneditor.petrinet.adapters , un package causeretjasmin qui contient notre adaptateur.
+	<li>Dans src , un package unitTest dans lequel nous avons fait des tests JUnit pour notre implémentation finale.
 </ul>
 
-###Lancement du code et des tests :
+###Lancement des tests :
 
-Il suffit de :
+Pour les tests, il suffit de :
 <ol>
-	<li>Lancer la méthode main d'un des fichiers de package test, en cliquant sur Run As Java Application sur le fichier.
-	<li>Lancer les tests JUnit d'un ou de tout les fichiers du package unitTest, en cliquant sur Coverage As JUnit Test (pour avoir la couverture des tests).
+	<li>Lancer les tests JUnit d'un ou de tout les fichiers du package unitTest, en cliquant sur Coverage As JUnit Test pour avoir la couverture des tests. Nos tests couvre 100% de notre implémentation finale. 
+</ol>
+
+###Lancement du code (faire fonctionner le PNE avec notre modèle) :
+
+Pour cela, il faut : 
+<ol>
+	<li>Exécuter le main dans src.org.pneditor.editor
+	<li>Dans la fenêtre qui s'ouvre, cliquer sur "Change model" dans la barre du haut puis sur causeretjasmin.
+	<li>Vous pouvez ensuite construire un PetriNet, enlever des places, des arcs, des transistions, changer des arcs(clique dessus, clique droit, puis le set en tant que inhibiteurs, videur ou changer son poids). 
 </ol>
 
 ###Lien entre le code actuel et la conception initiale (diagramme de classe UML) : 
 
 Notre code ne représente pas exactement le diagramme de classe que nous avions construit initialement.
+Le diagramme de classe final est celui obtenu par retro-ingénierie avec ObjectAid. 
 Il y a trois différences majeures :
  - nous avons remplacé la classe Arc par une classe Abstraite et rajouté un interface IPetriNet
  - nous avons changé les méthodes d'ajout d'arcs, de places et de transition dans la classe PetriNet
  - nous avons rajouté des méthodes dans nos classes pour faciliter la rédaction des modifications dans PetriNet, notamment dans :
  	-Arc : ajout de getters.
- 	-Transition : ajout de méthodes pour connaitre s'il y a un arc entre une place et une transition, et avoir l'arc le cas échéant, mais aussi ajout d'une méthode pour enlever un arc d'une transition.
+ 	-Transition : ajout de getters et ajout de méthodes pour connaitre s'il y a un arc entre une place et une transition, et avoir l'arc le cas échéant, mais aussi ajout d'une méthode pour enlever un arc d'une transition.
 
 Concernant les nouvelles méthodes d'ajout d'éléments dans PetriNet : nous avons fait le choix de renvoyer les éléments après leurs ajout,
 ce qui est plus simple pour construire le PetriNet.
@@ -88,6 +99,5 @@ Si non, on ajoutera simplemment l'arc.
 Si oui, on remplacera l'ancien arc par le nouveau. 
 De cette façon, il ne peut pas y avoir deux arcs qui relient une place et une transition. 
 
-MAJ du 13/11:
-Nous avons rajouté des getters à la classe Transition, nous avons modifié les méthodes remPlace() et remTransition de la classe PetriNet
-et nous avons ajouté un diagramme UML que nous avons obtenu en testant ObjectAid. 
+Remarque : Mise à jour du 13/11 (dernière modification) : nous avons modifié les méthodes remPlace() et remTransition de la classe PetriNet.
+
