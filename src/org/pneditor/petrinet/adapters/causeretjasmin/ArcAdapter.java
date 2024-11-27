@@ -8,10 +8,12 @@ import org.pneditor.petrinet.models.causeretjasmin.*;
 public class ArcAdapter extends AbstractArc {
 	
 	private TransitionAdapter transition;
+	private PlaceAdapter placeAdapted;
 	private Arc arc;
 	
 	public ArcAdapter(Arc arc) {
 		this.arc = arc;
+		this.placeAdapted = new PlaceAdapter("",this.arc.getPlace());
 	}
 	
 	public Arc getArc() {
@@ -21,18 +23,18 @@ public class ArcAdapter extends AbstractArc {
 	@Override
 	public AbstractNode getSource() {
 		if (this.arc instanceof InArc) {
-			return new PlaceAdapter("",this.arc.getPlace());
+			return this.placeAdapted;
 		} else {
-			return transition;
+			return this.transition;
 		}
 	}
 	
 	@Override
 	public AbstractNode getDestination() {
 			if (this.arc instanceof InArc) {
-				return transition;
+				return this.transition;
 			} else {
-				return new PlaceAdapter("",this.arc.getPlace());
+				return this.placeAdapted;
 			}
 	}
 	

@@ -71,7 +71,7 @@ public class PetriNetAdapter extends PetriNetInterface {
 			for (AbstractArc arc : this.getConnectedArcs(transition)) {
 				ArcAdapter arcAdapted = (ArcAdapter)arc;
 				if (arcAdapted.getSource().equals(place) || arcAdapted.getDestination().equals(place)) {
-					this.removeArc(arc);
+					this.removeArc(arcAdapted);
 				}
 			}
 		}
