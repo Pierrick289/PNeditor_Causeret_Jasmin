@@ -105,9 +105,6 @@ Remarque : Mise à jour du 13/11 (dernière modification) : nous avons modifié 
 
 Concernant notre adaptateur : 
 Nous avons suivi le patron de conception adaptateur pour les classes ArcAdapter, PlaceAdapter et TransitionAdapter.
-Toutefois, nous avons légérement adapté notre façon de suivre ce patron de conception pour la classe PetriNetAdapter.
-En effet, nous avons aussi suivi le patron de conception adaptateur mais nous n'avons pas utilisé en variable d'instance un PetriNet de notre implémentation (nous n'avons pas encapsuler une instance de PetriNet dans PetriNetAdapter). 
-Nous avons fait ce choix car nous estimons qu'il y a déjà les espaces mémoires nécessaires pour ce dont on a besoin dans la classe PetriNetInterface proposer par le client. Ainsi, il aurait été redondant (et non utile) d'enregistrer une variable d'instance PetriNet dans la classe PetriNetAdapter (de plus nous pouvons créer nos places, transitions et arcs sans avoir à utiliser une instance de PetriNet, donc on en avait pas vraiment besoin). 
 
 ###Notre commentaire de l’analyse statique de notre code avec STAN:
 

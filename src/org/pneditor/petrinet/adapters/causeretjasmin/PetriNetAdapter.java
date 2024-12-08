@@ -80,23 +80,12 @@ public class PetriNetAdapter extends PetriNetInterface {
 
 	@Override
 	public void removePlace(AbstractPlace place) {
-		/*for (AbstractTransition transition : this.getTransitions()) {
-			for (AbstractArc arc : this.getConnectedArcs(transition)) {
-				ArcAdapter arcAdapted = (ArcAdapter)arc;
-				if (arcAdapted.getSource().equals(place) || arcAdapted.getDestination().equals(place)) {
-					this.removeArc(arcAdapted);
-				}
-			}
-		}*/
 		PlaceAdapter placeAdapted = (PlaceAdapter)place;
 		pn.remPlace(placeAdapted.getPlace());
 	}
 
 	@Override
 	public void removeTransition(AbstractTransition transition) {
-		/*for (AbstractArc arc : this.getConnectedArcs(transition)) {
-			this.removeAbstractArc(arc);
-		}*/
 		TransitionAdapter transitionAdapted = (TransitionAdapter)transition;
 		pn.remTransition(transitionAdapted.getTransition());
 	}
@@ -104,14 +93,6 @@ public class PetriNetAdapter extends PetriNetInterface {
 	@Override
 	public void removeArc(AbstractArc arc) {
 		ArcAdapter arcAdapted = (ArcAdapter)arc;
-		/*if (arcAdapted.getDestination().getClass() == TransitionAdapter.class) {
-			TransitionAdapter transition = (TransitionAdapter)arcAdapted.getDestination();
-			transition.getTransition().remArcT((InArc)arcAdapted.getArc());
-		}
-		else {
-			TransitionAdapter transition = (TransitionAdapter)arcAdapted.getSource();
-			transition.getTransition().remArcT((OutArc)arcAdapted.getArc());
-		}*/
 		pn.remArc(arcAdapted.getArc());
 	}
 
