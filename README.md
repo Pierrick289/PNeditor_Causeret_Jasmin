@@ -108,4 +108,14 @@ Nous avons suivi le patron de conception adaptateur pour les classes ArcAdapter,
 
 ###Notre commentaire de l’analyse statique de notre code avec STAN:
 
+Pour le modèle implémenté :
+- La hiérarchie en niveaux est relativement claire dans le graphe
+- ELOC / unit = 38.07, niveau correct
+- Cyclomatic complexity = 1.42 < 10, le programme est relativement simple.  Le nombre de chemins de décisions est plutôt faible, ce qui facilite la maintenance, la
+ relecture, et le test du programme.
+- ACD unit = 43.8, le couplage entre les classes est assez élevé ce qui peut entrainer un système plus difficile à maintenir et à tester. Cela est principalement dû aux modifications effectuées avant l'implémentation du PNE afin de faciliter celle-ci.
+- WMC = 9.47, cela montre que la complexité de la classe (basée sur la somme pondérée des complexités de ses méthodes) est raisonnable car les classes ont des responsabilités claires, mais elle peut devenir problématique si elle dépasse 10 ou 15. Une complexité croissante peut rendre les classes plus difficiles à comprendre et à maintenir.
+- CBO = 2.4, cette valeur est modérée. Un CBO élevé peut rendre une classe fortement dépendante d'autres classes, ce qui complique les modifications et les tests.
+- LCOM = 2.13, cette valeur est faible. Les classes gagneraient probablement a être refactorisées.
+
 A compléter : analyser les 3 trucs code client, adapteur et implémentation + remarque sur dépendances et métriques.
