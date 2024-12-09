@@ -108,7 +108,7 @@ Nous avons suivi le patron de conception adaptateur pour les classes ArcAdapter,
 
 ###Notre commentaire de l’analyse statique de notre code avec STAN:
 
-Pour le modèle implémenté :
+Pour le modèle implémenté : on observe le package org.pneditor.petrinet.models.causeretjasmin :
 - La hiérarchie en niveaux est relativement claire dans le graphe
 - ELOC / unit = 38.07, niveau correct
 - Cyclomatic complexity = 1.42 < 10, le programme est relativement simple.  Le nombre de chemins de décisions est plutôt faible, ce qui facilite la maintenance, la
@@ -118,4 +118,6 @@ Pour le modèle implémenté :
 - CBO = 2.4, cette valeur est modérée. Un CBO élevé peut rendre une classe fortement dépendante d'autres classes, ce qui complique les modifications et les tests.
 - LCOM = 2.13, cette valeur est faible. Les classes gagneraient probablement a être refactorisées.
 
-A compléter : analyser les 3 trucs code client, adapteur et implémentation + remarque sur dépendances et métriques.
+Une seule violation est observée : 
+- Pour la métrique D de Robert C. Martin, car la valeur est D = -0.8. C'est une pollution en distance. Cette métrique est comprise entre -1 et 1. Ici, le -0.8 signifie que notre package est très éloigné de la séquence principale (Main Sequence, dans notre cas le main dans org.pneditor.editor).
+
